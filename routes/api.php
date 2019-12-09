@@ -18,5 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'auth.jwt'], function () {
-    
+
 });
+
+Route::resource('cidade', 'CidadeController');
+Route::resource('grupo', 'GrupoCidade');
+
