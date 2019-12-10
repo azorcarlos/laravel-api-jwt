@@ -13,9 +13,11 @@ class CreateCidadesTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('cidades');
         Schema::create('cidades', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable(false);
+            $table->timestamps();
         });
     }
 
