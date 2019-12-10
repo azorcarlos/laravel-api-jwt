@@ -28,7 +28,10 @@ class CidadesTableSeeder extends Seeder
             ['name'=>'São Paulo']
         );
         DB::table('cidades')->insert(
-            ['name'=>'Rio de Janeiro']
+            ['name'=>'Serrana']
+        );
+        DB::table('cidades')->insert(
+            ['name'=>'Poços de Caldas']
         );
     }
 }
