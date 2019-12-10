@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCidadesTable extends Migration
+class CreateGrupoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateCidadesTable extends Migration
      */
     public function up()
     {
-        Schema::dropIfExists('cidades');
-        Schema::create('cidades', function (Blueprint $table) {
+        Schema::create('grupo', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name')->nullable(false);
-            $table->char('state',2)->nullable(false);
             $table->timestamps();
-            $table->unique(['name','state']);
         });
     }
 
@@ -30,6 +27,6 @@ class CreateCidadesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cidades');
+        Schema::dropIfExists('grupo');
     }
 }

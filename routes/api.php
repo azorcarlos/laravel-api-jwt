@@ -22,5 +22,5 @@ Route::group(['middleware' => 'auth.jwt'], function () {
 });
 
 Route::resource('cidade', 'CidadeController');
-Route::resource('grupo', 'GrupoCidade');
+Route::resource('grupo', 'GrupoController');
 

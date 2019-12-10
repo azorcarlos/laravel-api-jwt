@@ -3,26 +3,56 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\GrupoCidade;
 
 class Grupo extends Model
 {
-    protected $table        = 'grupo_cidades';
-    public    $incrementing = false;
-    public    $timestamps   = false;
-    protected $fillable     = ['name', 'id_cidade','id'];
+    protected $fillable     = ['name'];
+    protected $table        = 'grupo';
 
-    public function saveGrupoAllCidades($request)
+    public function saveGrupoCidades($request)
     {
-
         $return = [];
-        $id     = $this->lastId();
-        foreach ($request['cidade'] as $item){
-            if(!Grupo::where('id_cidade',$item)->first()){
-                $return =  $this->create(['id'=>$id,'name'=>$request['name'],'id_cidade'=>$item]);
+
+        $grupo  = $this->create(['name'=>$request['name']]);
+        $id     = $grupo->id;
+        $return = [];
+
+        if(is_array($request['cidade'])){
+            foreach ($request['cidade'] as $item){
+
+                if(!GrupoCidade::where('id_cidade',$item)->first()){
+                    $return =  GrupoCidade::create(['id_grupo'=>$id,'id_cidade'=>$item]);
+                }
             }
+        }else{
 
+            if(!GrupoCidade::where('id_cidade',$request['cidade'])->first()){
+                $return =  GrupoCidade::create(['id_grupo'=>$id,'id_cidade'=>$request['cidade']]);
+            }
         }
+        return $return;
+    }
 
+    public function updateGrupoCidades($request,$id)
+    {
+        $return = [];
+        $delete = GrupoCidade::where('id_grupo',$id)->delete();
+
+        if($delete){
+            if(is_array($request['cidade'])){
+                foreach ($request['cidade'] as $item){
+
+                    if(!GrupoCidade::where('id_cidade',$item)->first()){
+                        $return =  GrupoCidade::create(['id_grupo'=>$id,'id_cidade'=>$item]);
+                    }
+                }
+            }else{
+                if(!GrupoCidade::where('id_cidade',$request['cidade'])->first()){
+                    $return =  GrupoCidade::create(['id_grupo'=>$id,'id_cidade'=>$request['cidade']]);
+                }
+            }
+        }
         return $return;
     }
 
