@@ -8,6 +8,7 @@ use App\GrupoCidade;
 class Grupo extends Model
 {
     protected $fillable     = ['name'];
+    protected $hidden       = ['id'];
     protected $table        = 'grupo';
 
     public function saveGrupoCidades($request)
@@ -56,9 +57,9 @@ class Grupo extends Model
         return $return;
     }
 
-    public function lastId()
+    public function getCidades()
     {
-        return ($this->all()->max('id'))?$this->all()->max('id')+1:1;
-
+        return $this->hasMany('App\GrupoCidade','id_grupo');
     }
+
 }

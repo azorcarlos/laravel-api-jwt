@@ -8,4 +8,7 @@ class GrupoCidade extends Model
 {
 
     protected $fillable = ['id_grupo','id_cidade'];
+
+
+
 }
