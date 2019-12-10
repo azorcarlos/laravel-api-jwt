@@ -14,7 +14,7 @@ class GrupoCidade extends Controller
      */
     public function index()
     {
-        //
+        return Grupo::all();
     }
 
     /**
@@ -25,14 +25,17 @@ class GrupoCidade extends Controller
      */
     public function store(Request $request)
     {
-        $teste = new Grupo();
+        $grupoCidades = new Grupo();
 
         if(is_array($request['cidade'])){
+            //Salvar multiplas cidades
+            return $grupoCidades->saveGrupoAllCidades($request);
 
-            return $teste->saveGrupoAllCidades($request);
-        }else{
-            $id    = $teste->lastId();
-            return Grupo::create(['id'=>$id,'name'=>$request['name'],'id_cidade'=>$request['cidade']]);
+        }else {
+            if (!$grupoCidades->where('id_cidade',$request['cidade'])->first()){
+                $lastId = $grupoCidades->lastId();
+                return $grupoCidades->create(['id' => $lastId, 'name' => $request['name'], 'id_cidade' => $request['cidade']]);
+            }
         }
     }
 
@@ -56,19 +59,21 @@ class GrupoCidade extends Controller
      */
     public function update(Request $request, $id)
     {
-       return response()->json(['cidades'=>$request['cidade']]);
 
-        foreach ($request['cidade'] as $item) {
-            $teste = [$item];
+        $update = new Grupo();
+        $update->destroy($id);
+        if(is_array($request['cidade'])){
+            return $update->saveGrupoAllCidades($request->id = $id);
 
+        }else {
+            if (!$update->where('id_cidade',$request['cidade'])->first()){
+                $lastId = $update->lastId();
+                return $update->create(['id' => $lastId, 'id_cidade' => $request['cidade']]);
+            }
         }
-        return ['teste'=>$teste];
 
-        $grupo = Grupo::find($id);
-        $grupo->name =  $request['name'];
-        $grupo->id_cidade = $request['cidade'];
-        $grupo->save();
-        return $grupo;
+        return $update;
+
     }
 
     /**
@@ -79,6 +84,6 @@ class GrupoCidade extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Grupo::destroy($id);
     }
 }

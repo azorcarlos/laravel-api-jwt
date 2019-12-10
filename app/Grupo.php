@@ -17,9 +17,12 @@ class Grupo extends Model
         $return = [];
         $id     = $this->lastId();
         foreach ($request['cidade'] as $item){
+            if(!Grupo::where('id_cidade',$item)->first()){
+                $return =  $this->create(['id'=>$id,'name'=>$request['name'],'id_cidade'=>$item]);
+            }
 
-            $return =  $this->firstOrCreate(['id'=>$id,'name'=>$request['name'],'id_cidade'=>$item]);
         }
+
         return $return;
     }
 
