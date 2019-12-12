@@ -7,7 +7,7 @@ use App\GrupoCidade;
 
 class Grupo extends Model
 {
-    protected $fillable     = ['name'];
+    protected $fillable     = ['name','starts_at'];
     protected $hidden       = ['id'];
     protected $table        = 'grupo';
 

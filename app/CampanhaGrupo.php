@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CampanhaGrupo extends Model
 {
     protected $fillable = [
-      'companha_id',
+      'campanha_id',
       'grupo_id'
     ];
 }

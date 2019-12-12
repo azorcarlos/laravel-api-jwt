@@ -27,7 +27,8 @@ class CampanhaController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $newCampanha = new Campanha();
+        return $newCampanha->updateCampanhasGrupo($request,$id);
     }
 
 

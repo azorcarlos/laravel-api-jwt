@@ -10,59 +10,72 @@ use Illuminate\Support\Facades\DB;
 class Campanha extends Model
 {
     //Padrão Carbon
-//    protected $dates = [
-//        'starts_at',
-//        'ends_at'
-//    ];
+    protected $dates = [
+        'starts_at',
+        'ends_at'
+    ];
 
     protected $fillable = [
         'name',
         'starts_at'
     ];
 
+   // public $timestamps = false;
+
     public function criarCampanhasGrupo($request)
     {
-        $campanha = Campanha::create(['name'=>$request['name'],'starts_at'=>Carbon::now()]);
         $grupo = $request['grupo'];
 
-        $return = [];
-        if($campanha){
+        if($this->existCampanhaAtiva($grupo)){
+           return response()->json(['ok'=>false,'msg'=>'Ja existe uma campanha ativa!']);
+        }
 
+        if($campanha = Campanha::create(['name'=>$request['name'],'starts_at'=>$request['starts_at']])){
+            $idNewGrupo = $campanha->id;
             if(is_array($grupo)){
-
                 foreach ($grupo as $item){
-                    return $this->existCampanhaAtiva($item);
-
-                    if(!$this->existCampanhaAtiva($item)){
-
-                        $return = CampanhaGrupo::create(['campanha_id'=>$campanha->id,'grupo_id'=>$item]);
-
-                    }
-                   // return $grupo;
+                  CampanhaGrupo::create(['campanha_id'=>$idNewGrupo,'grupo_id'=>$item]);
                 }
             }else{
-                if(!$this->existCampanhaAtiva($request['grupo'])){
-                    $return = CampanhaGrupo::create(['campanha_id'=>$campanha->id,'grupo_id'=>$grupo]);
-
-                }
+                 CampanhaGrupo::create(['campanha_id'=>$idNewGrupo,'grupo_id'=>$grupo]);
 
             }
         }
-        return $return;
+          return response()->json(['ok'=>true,'msg'=>'Campanha cadastrada com Sucesso!']);
+    }
+
+    public function updateCampanhasGrupo($request,$id){
+        if(CampanhaGrupo::where('campanha_id',$id)->delete()){
+
+            $campanha = Campanha::find($id);
+            $campanha->name      = $request['name'];
+            $campanha->starts_at = $request['starts_at'];
+            $campanha->ends_at   = $request['ends_at'];
+
+            if($campanha->save()){
+                if(is_array($request['grupo'])){
+                    foreach ($request['grupo'] as $item){
+                        CampanhaGrupo::create(['campanha_id'=>$id,'grupo_id'=>$item]);
+                    }
+                }else{
+                       CampanhaGrupo::create(['campanha_id'=>$id,'grupo_id'=>$request['grupo']]);
+                }
+                return response()->json(['ok'=>true,'msg'=>'Registro atualizado com sucesso!']);
+            }
+            return response()->json(['ok'=>false,'msg'=>'Erro ao atualizar os itens da campanha!']);
+        }
     }
 
     public function existCampanhaAtiva($grupo)
     {
-       
-        $query = "select c.id
-                    from campanhas c inner join campanha_grupos cg 
-                    on c.id = cg.campanha_id
-                    where cg.grupo_id = {$grupo}
-                    and c.starts_at <= current_timestamp 
-                    and (c.ends_at is null or c.ends_at > current_timestamp)";
-        dd($query);
-        return $query;
 
-        return DB::raw($query);
-    }
+        $grupo = (is_array($grupo)?implode(',',$grupo):$grupo);
+            return DB::select("select c.id
+                    from campanhas c inner join campanha_grupos cg
+                    on c.id = cg.campanha_id
+                    where cg.grupo_id in({$grupo})
+                    and c.starts_at <= current_timestamp
+                    and (c.ends_at is null or c.ends_at > current_timestamp)");
+        }
+
 }
