@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ba5101b-ae88-4990-a66d-5b681422a276" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Campanha.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Campanha.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/CampanhaGrupo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/CampanhaGrupo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Grupo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Grupo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CampanhaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CampanhaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/httpRequests/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,72 +16,7 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Grupo.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Grupo.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="63" />
-              <folding>
-                <element signature="e#23#62#0#PHP" expanded="true" />
-                <element signature="e#235#952#0#PHP" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Campanha.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Campanha.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="65" column="9" lean-forward="true" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CampanhaController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CampanhaController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
-              <folding>
-                <element signature="e#40#68#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GrupoCidade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/GrupoCidade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="36" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GrupoController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/GrupoController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="38" column="34" lean-forward="true" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
-              <folding>
-                <element signature="e#40#68#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CampanhaGrupo.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/CampanhaGrupo.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="12" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -119,7 +47,9 @@
         <option value="$PROJECT_DIR$/app/Grupo.php" />
         <option value="$PROJECT_DIR$/app/CampanhaGrupo.php" />
         <option value="$PROJECT_DIR$/app/Campanha.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/Campanha.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CampanhaController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Requests/CampanhaRequest.php" />
       </list>
     </option>
   </component>
@@ -240,7 +170,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -300,17 +230,15 @@
               <item name="laravel-api-jwt" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="GrupoController.php" type="88303cf5:PhpFileNode" />
+              <item name="Requests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="laravel-api-jwt" type="b2602c69:ProjectViewProjectNode" />
               <item name="laravel-api-jwt" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="GrupoController.php" type="88303cf5:PhpFileNode" />
-              <item name="GrupoController" type="e2efd96b:PhpElementNode" />
+              <item name="Requests" type="462c0819:PsiDirectoryNode" />
+              <item name="CampanhaRequest.php" type="88303cf5:PhpFileNode" />
             </path>
             <path>
               <item name="laravel-api-jwt" type="b2602c69:ProjectViewProjectNode" />
@@ -462,16 +390,15 @@
       <option name="presentableId" value="Default" />
       <updated>1575978201856</updated>
       <workItem from="1575978203451" duration="13375000" />
-      <workItem from="1576000501561" duration="19214000" />
+      <workItem from="1576000501561" duration="21315000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41757000" />
+    <option name="totallyTimeSpent" value="43858000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -543,16 +470,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CidadeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="e#1320#1397#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Campanha.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -830,17 +747,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Grupo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="63" />
-          <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
-            <element signature="e#235#952#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/GrupoCidade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -858,6 +764,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Requests/CampanhaRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CampanhaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+            <element signature="e#139#185#0#PHP" />
+            <element signature="e#191#341#0#PHP" />
+            <element signature="e#348#396#0#PHP" />
+            <element signature="e#402#470#0#PHP" />
+            <element signature="e#477#556#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Campanha.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -865,12 +793,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CampanhaController.php">
+    <entry file="file://$PROJECT_DIR$/app/Grupo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
+        <state relative-caret-position="263">
+          <caret line="40" column="31" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="63" />
           <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
+            <element signature="e#23#62#0#PHP" expanded="true" />
+            <element signature="e#235#952#0#PHP" />
           </folding>
         </state>
       </provider>
