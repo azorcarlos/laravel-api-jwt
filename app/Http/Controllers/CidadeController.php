@@ -15,7 +15,7 @@ class CidadeController extends Controller
     }
 
     public function store(CidadeRequest $request)
-    {   //return $request;
+    {
         return Cidade::create(['name'=>$request['name'],'state'=>$request['state']]);
     }
 
@@ -35,6 +35,8 @@ class CidadeController extends Controller
 
     public function destroy($id)
     {
-        return Cidade::destroy($id);
+        $return  = (Cidade::destroy($id) == 1)?true:false;
+        $cidades = Cidade::all();
+        return response()->json(['status'=>$return,'lista'=>$cidades]);
     }
 }

@@ -8,7 +8,6 @@ use App\GrupoCidade;
 class Grupo extends Model
 {
     protected $fillable     = ['name','starts_at'];
-    protected $hidden       = ['id'];
     protected $table        = 'grupo';
 
     public function saveGrupoCidades($request)
@@ -24,6 +23,8 @@ class Grupo extends Model
 
                 if(!GrupoCidade::where('id_cidade',$item)->first()){
                     $return =  GrupoCidade::create(['id_grupo'=>$id,'id_cidade'=>$item]);
+                }else{
+
                 }
             }
         }else{
@@ -37,11 +38,15 @@ class Grupo extends Model
 
     public function updateGrupoCidades($request,$id)
     {
-        $return = [];
-        $delete = GrupoCidade::where('id_grupo',$id)->delete();
 
-        if($delete){
+        $return = [];
+        $grupo = Grupo::find($id);
+        $grupo->name = $request['name'];
+        $grupo->save();
+
+        GrupoCidade::where('id_grupo',$id)->delete();
             if(is_array($request['cidade'])){
+
                 foreach ($request['cidade'] as $item){
 
                     if(!GrupoCidade::where('id_cidade',$item)->first()){
@@ -49,11 +54,12 @@ class Grupo extends Model
                     }
                 }
             }else{
+
                 if(!GrupoCidade::where('id_cidade',$request['cidade'])->first()){
                     $return =  GrupoCidade::create(['id_grupo'=>$id,'id_cidade'=>$request['cidade']]);
                 }
             }
-        }
+
         return $return;
     }
 

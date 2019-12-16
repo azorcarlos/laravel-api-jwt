@@ -24,4 +24,5 @@ Route::group(['middleware' => 'auth.jwt'], function () {
 Route::resource('cidade', 'CidadeController');
 Route::resource('grupo', 'GrupoController');
 Route::resource('campanha', 'CampanhaController');
+Route::resource('desconto', 'DescontoController');
 

@@ -12,25 +12,35 @@ class Campanha extends Model
     //Padrão Carbon
     protected $dates = [
         'starts_at',
-        'ends_at'
-    ];
+        'ends_at',
+        'desconto_id'];
 
     protected $fillable = [
         'name',
-        'starts_at'
+        'starts_at',
+        'ends_at'
     ];
 
    // public $timestamps = false;
 
     public function criarCampanhasGrupo($request)
     {
-        $grupo = $request['grupo'];
+       $grupo = $request['grupo'];
 
         if($this->existCampanhaAtiva($grupo)){
            return response()->json(['ok'=>false,'msg'=>'Ja existe uma campanha ativa!']);
         }
 
-        if($campanha = Campanha::create(['name'=>$request['name'],'starts_at'=>$request['starts_at']])){
+        $campanha = Campanha::create(
+            [
+                'name'=>$request['name'],
+                'starts_at'=>$request['starts_at'],
+                'ends_at'=>$request['ends_at'],
+                'desconto_id'=>$request['id_desconto']
+            ]
+        );
+
+        if($campanha){
             $idNewGrupo = $campanha->id;
             if(is_array($grupo)){
                 foreach ($grupo as $item){
@@ -45,9 +55,11 @@ class Campanha extends Model
     }
 
     public function updateCampanhasGrupo($request,$id){
-        if(CampanhaGrupo::where('campanha_id',$id)->delete()){
+
+           CampanhaGrupo::where('campanha_id',$id)->delete();
 
             $campanha = Campanha::find($id);
+           // $campanha->desconto_id   = $request['id_desconto'];
             $campanha->name      = $request['name'];
             $campanha->starts_at = $request['starts_at'];
             $campanha->ends_at   = $request['ends_at'];
@@ -63,7 +75,6 @@ class Campanha extends Model
                 return response()->json(['ok'=>true,'msg'=>'Registro atualizado com sucesso!']);
             }
             return response()->json(['ok'=>false,'msg'=>'Erro ao atualizar os itens da campanha!']);
-        }
     }
 
     public function existCampanhaAtiva($grupo)

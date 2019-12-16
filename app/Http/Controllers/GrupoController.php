@@ -12,7 +12,8 @@ class GrupoController extends Controller
 
     public function index()
     {
-        response()->json(['dados'=>Grupo::all()]);
+
+       return  Grupo::all();
     }
 
     public function store(GrupoRequest $request)
@@ -27,7 +28,9 @@ class GrupoController extends Controller
        //return Grupo::find($id);
        return DB::table('grupo')
                ->join('grupo_cidades', 'id_grupo', '=', 'grupo.id')
-               ->select('grupo.*', 'grupo_cidades.*')
+               ->join('cidades', 'cidades.id', '=', 'grupo_cidades.id_cidade')
+               ->select('cidades.id','cidades.name')
+               ->where('id_grupo','=',$id)
                ->get();
 
          //return DB::select( DB::raw("select * from grupo limit 2"));
